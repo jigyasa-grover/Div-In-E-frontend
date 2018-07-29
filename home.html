@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en' style="height: 100%">
+<head>
 <meta name="google-signin-scope" content="profile email">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="415744417637-4sotrp5shbnnf4kso8mkkijglbcqcbn5.apps.googleusercontent.com">
@@ -13,9 +14,14 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-<head>
+
     <meta charset='UTF-8'>
     <title>Divine</title>
+    <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
+<script id="gs-sdk" src='//www.buildquickbots.com/botwidget/v2/demo/static/js/sdk.js?v=2' key="ab07e5aa-d8e0-4156-b6c9-9dc6a75072ed" ></script>
 </head>
 <body style="height: 100%">
     <div class="bg-primary">
@@ -44,6 +50,12 @@
     $(document).ready(function() {
         $.get("login.html", function(response) {
             $(".content").html(response);
+        });
+
+        $(".content").on("click", "#login-user", function() {
+            $.get("stories.html", function(response) {
+                $(".content").html(response);
+            });
         });
     });
 </script>
