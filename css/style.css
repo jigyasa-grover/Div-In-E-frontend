@@ -1,0 +1,13 @@
+.login_wrapper {
+    background-color: #f7f7f9;
+    height: 90%;
+    width: 80%;
+    margin: 10%;
+    border-radius: 10px;
+}
+#login {
+    text-align: center;
+}
+#login, #signup {
+    margin: 10%;
+}
