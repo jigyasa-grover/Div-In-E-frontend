@@ -1,0 +1,61 @@
+<div  style="height: 100%; width: 60%; background-repeat: no-repeat;
+    background-size: contain; display: grid; overflow: hidden; 
+    background-image: url('./images/diversity-grid.png');float: left;" >
+</div>
+<div style="display: inline-block; height: 100%; width: 40%">
+    <div class="login_wrapper"> 
+        <div class="logo" style="height: 30%; text-align: center; ">
+            <img src="images/logo.png" style="height: 80%; width: 40%; margin-top: 20px;">
+        </div>
+        <div id="login">
+            <div class="fb-login-content">
+                <div class="fb-login-button" data-onlogin="getUserData" data-max-rows="1"
+                    data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                <div id="fb-root"></div>
+            </div>
+            <div class="google-login-content">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
+            
+        </div>    
+        <div id="signup" style="display:none">
+            <div class="form-group has-danger">
+                <label class="form-control-label" for="inputDanger1">Gender</label>
+                <br>
+                <label style="width: 20%; margin-left: 20px;" class="custom-control-label" for="female"><input type="radio" class="form-check-input" id="female">Female</label>
+                <label class="custom-control-label" for="male"><input type="radio" class="form-check-input" id="male">Male</label>
+                <div style="display: inline-block; margin-left: 15px;">
+                    <input type="text" value="Other" class="form-control" id="">
+                </div>    
+                    
+            </div>
+            <div class="form-group has-danger">
+                <label class="form-control-label" for="inputDanger1">Ethnicity</label>
+                <select class="custom-select" class="form-control is-invalid" id="">
+                    <option>American</option>
+                    <option>Chinese</option>
+                    <option>French</option>
+                    <option>Italian</option>
+                    <option>Indian</option>
+                </select>
+            </div>
+            <div class="form-group has-danger">
+                <label class="form-control-label" for="inputDanger1">Country of Residence</label>
+                <select class="custom-select" class="form-control is-invalid" id="">
+                    <option>China</option>
+                    <option>France</option>
+                    <option>Italy</option>
+                    <option>India</option>
+                    <option>United States Of America</option>
+                </select>
+            </div>
+            <div class="form-group has-danger">
+                <label class="form-control-label" for="inputDanger1">Disability</label>
+                <input type="text" value="please specify" class="form-control" id="">
+            </div>
+            <div class="form-group" style="text-align: center;">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </div>    
+        </div>
+    </div>    
+</div>
