@@ -103,7 +103,7 @@
 <script>
 
     $(document).ready(function () {
-        $.get("login.html", function (response) {
+        $.get("stories.html", function (response) {
             $(".content").html(response);
         });
 
@@ -116,25 +116,40 @@
             var category = $(this).data('category');
             $.ajax({
                 type: 'GET',
-                dataType: 'json',
+                dataType: 'jsonp',
                 data: {},
-                url: "http://localhost:8080/function/fetch-stories?callback=customFn&category=" + category,
+                url: "http://localhost:8080/function/fetch-stories?callback=?&category=" + category,
+                jsonpCallback: "localJsonpCallback",
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR)
-                    console.log(textStatus);
+                    
                 },
                 success: function (msg) {
                 
                 },
                 customFn: function(msg) {
-                    console.log(msg);
+                    
                 }
              }).done(function(data) {
-                 console.log(data);
+                $(".heading-content1").html(data[0].title);
+                $("#image-1").attr("src", data[0].image);
+                $(".heading-content2").html(data[1].title);
+                $("#image-2").attr("src", data[1].image);
+                $(".big-content1").html(data[0].text);
+                $(".big-content2").html(data[1].text);
+                var str = "";
+                $.each(data, function(key, item) {
+                    if(key == 1 || key == 2) return true;
+                    str += '<div class="card bg-light mb-3" style="width: 20%; display: flex; float: left; margin-right: 40px">\
+                        <div class="card-header">' + item.title + '</div>\
+                        <img src="'+ item.image +'" style="height: 100%; width: 100%;>\
+                        <div class="card-body">\
+                            <p class="card-text">' + item.text + '</p>\
+                        </div>\
+                        </div>';
+                });
+                $("#similar-story").html(str);
              });
-            
-        });
-        
+        });   
     });
 </script>
 <script>
