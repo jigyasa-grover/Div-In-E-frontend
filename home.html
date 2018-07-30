@@ -48,7 +48,7 @@
 </body>
 <script>
     $(document).ready(function() {
-        $.get("login.html", function(response) {
+        $.get("stories.html", function(response) {
             $(".content").html(response);
         });
 
@@ -57,6 +57,29 @@
                 $(".content").html(response);
             });
         });
+        $(".content").on("click", ".category_type", function(e) {
+            var category = $(this).data('category');
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                data: {},
+                url: "http://localhost:8080/function/fetch-stories?callback=customFn&category=" + category,
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR)
+                    console.log(textStatus);
+                },
+                success: function (msg) {
+                
+                },
+                customFn: function(msg) {
+                    console.log(msg);
+                }
+             }).done(function(data) {
+                 console.log(data);
+             });
+            
+        });
+        
     });
 </script>
 <script>
