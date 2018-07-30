@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html lang='en' style="height: 100%">
+
 <head>
-<meta name="google-signin-scope" content="profile email">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="415744417637-4sotrp5shbnnf4kso8mkkijglbcqcbn5.apps.googleusercontent.com">
-<link rel="stylesheet" type="text/css" href="css/custom.min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Elsie Swash Caps" />
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="415744417637-4sotrp5shbnnf4kso8mkkijglbcqcbn5.apps.googleusercontent.com">
-<meta name="google-signin-scope" content="profile email">
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+    <meta name="google-signin-scope" content="profile email">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="415744417637-4sotrp5shbnnf4kso8mkkijglbcqcbn5.apps.googleusercontent.com">
+    <link rel="stylesheet" type="text/css" href="css/custom.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Elsie Swash Caps" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="415744417637-4sotrp5shbnnf4kso8mkkijglbcqcbn5.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="profile email">
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
+
+    <style>
+        /* // Google Identity and Google+ Sign in buttons
+        // https://developers.google.com/+/branding-guidelines */
+        .google-button {
+            height: 40px;
+            border-width: 0;
+            background: white;
+            color: #737373;
+            border-radius: 5px;
+            white-space: nowrap;
+            box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+            transition-property: background-color, box-shadow;
+            transition-duration: 150ms;
+            transition-timing-function: ease-in-out;
+            padding: 0;
+
+            &:focus,
+            &:hover {
+                box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+                background-color: #e5e5e5;
+                box-shadow: none;
+                transition-duration: 10ms;
+            }
+        }
+
+        .google-button__icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 8px 0 8px 8px;
+            width: 18px;
+            height: 18px;
+            box-sizing: border-box;
+        }
+
+        .google-button__icon--plus {
+            width: 27px;
+        }
+
+        .google-button__text {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Roboto', arial, sans-serif;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
     <meta charset='UTF-8'>
-    <title>Divine</title>
+    <title>divine</title>
     <script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
 
-<script id="gs-sdk" src='//www.buildquickbots.com/botwidget/v2/demo/static/js/sdk.js?v=2' key="ab07e5aa-d8e0-4156-b6c9-9dc6a75072ed" ></script>
+    <script id="gs-sdk" src='//www.buildquickbots.com/botwidget/v2/demo/static/js/sdk.js?v=2' key="ab07e5aa-d8e0-4156-b6c9-9dc6a75072ed"></script>
 </head>
+
 <body style="height: 100%">
     <div class="bg-primary">
-        <div class="navbar-brand" 
-            style="width: 100%; color: #fff; font-family: 'Elsie Swash Caps'; font-size: 28px; font-weight: 900; text-align: center;"
-        >
-                    Div-In-E
+        <div class="navbar-brand" style="width: 100%; color: #fff; font-family: 'sans-serif'; font-size: 35px; font-weight: 900; text-align: center;">
+            divine
+            <br>
+            <p style="width: 100%; color: #fff; font-family: 'Elsie Swash Caps'; font-size: 20px; font-weight: 700; font-style: italic text-align: center;">
+                connecting cultures, one story at a time.
+            </p>
         </div>
     </div>
     <div class="progress">
@@ -37,23 +91,24 @@
     <div class="progress">
         <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-        
+
     <div class="progress">
         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class="content" style="height: 80%;">
-        
+
     </div>
-    
+
 </body>
 <script>
-    $(document).ready(function() {
-        $.get("stories.html", function(response) {
+
+    $(document).ready(function () {
+        $.get("login.html", function (response) {
             $(".content").html(response);
         });
 
-        $(".content").on("click", "#login-user", function() {
-            $.get("stories.html", function(response) {
+        $(".content").on("click", "#login-user", function () {
+            $.get("stories.html", function (response) {
                 $(".content").html(response);
             });
         });
@@ -94,34 +149,35 @@
     }
 </script>
 <script>
-        function getUserData(fbUser) {
-            // window.location.reload();
-            console.log(fbUser);
-            $("#login").hide();
-            $("#signup").show();
-            FB.api('/me?fields=id,name,picture', function(response) {
-               console.log(JSON.stringify(response));
-               
-            });
-          }
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '1875671635823154',
-              cookie     : true,
-              xfbml      : true,
-              version    : 'v3.1'
-            });
-              
-            FB.AppEvents.logPageView();   
-              
-          };
-        
-          (function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             js.src = "https://connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
+    function getUserData(fbUser) {
+        // window.location.reload();
+        console.log(fbUser);
+        $("#login").hide();
+        $("#signup").show();
+        FB.api('/me?fields=id,name,picture', function (response) {
+            console.log(JSON.stringify(response));
+
+        });
+    }
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1875671635823154',
+            cookie: true,
+            xfbml: true,
+            version: 'v3.1'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
+
 </html>
