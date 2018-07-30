@@ -164,6 +164,7 @@
                 }
              }).done(function(data) {
                  console.log(data);
+                 $("#similar-story-connect").html("");
                 var str = "";
                 $.each(data, function(key, item) {
                     str += '<div class="card bg-light mb-3 custom-card" style="width: 20%; display: flex; float: left; margin-right: 40px">\
