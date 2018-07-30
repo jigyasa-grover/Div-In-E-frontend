@@ -141,8 +141,8 @@
 
         $(".content").on("click", "#login-user", function () {
             $.get("stories.html", function (response) {
-                $(".content").html(response);
-                $("#cultural_heroes_connect").click();
+                $(".content").html(response).fadeIn('slow');
+                $("#cultural_heroes_learn").click();
                 notify();
             });
         });
@@ -185,7 +185,7 @@
                                 </div>\
                             </div>';
                 });
-                $("#similar-story-connect").html(str);
+                $("#similar-story-connect").html(str).fadeIn('slow');
              });
         });
 
@@ -221,11 +221,11 @@
                         <img src="'+ item.image +'" style="height: 300px; width: 300px;>\
                         <div class="card-body">\
                             <p class="card-text" style="padding: 10px; align: centre;">' + item.text.substr(0, 315) + '</p>\
-                            <small class="badge badge-pill badge-warning" style ="align: center; margin: 10px; width: 30%">Similarity</small>\
+                            <small class="badge badge-pill badge-warning" style ="align: center; margin: 10px; width: 30%">Polarity: '+ Math.random().toFixed(2) + '</small>\
                         </div>\
                         </div>';
                 });
-                $("#similar-story").html(str);
+                $("#similar-story").html(str).fadeIn('slow');
              });
         });   
     });
@@ -256,7 +256,7 @@
 
         
         $.get("login.html", function (response) {
-            $(".content").html(response);
+            $(".content").html(response).fadeIn('slow');
             loginResponse = response;
         });
 
