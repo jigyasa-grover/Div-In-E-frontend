@@ -42,7 +42,7 @@
         }
 
         .custom-card {
-            height: 240px;
+            height: 320px;
         }
 
         .image-card {
@@ -175,11 +175,13 @@
                         return;
                     }
                     str += '<div class="card bg-light mb-3 custom-card" style="width: 20%; display: flex; float: left; margin-right: 40px;">\
+                                <div class="card-header" style="height: 60px;">' + item.name + '</div>\
                                 <div class="card-body">\
                                     <div class="image-card-div">\
                                         <img class="image-card" src="' + item.key_photo.photo_link + '">\
                                     </div>\
-                                    <h4 class="card-title">' + item.name + '</h4>\
+                                    <div style="text-align: center; margin-top: 10px;"><button type="button" class="btn btn-primary category_name" title="" data-container="body" data-toggle="popover" data-placement="left"\
+                    data-category="culture" data-original-title="Popover Title" id="culture_connect"><a target="_blank" style="color: #fff;" href="' + item.link + '">Connect</a></button></div>\
                                 </div>\
                             </div>';
                 });
@@ -207,18 +209,18 @@
              }).done(function(data) {
                 $(".heading-content1").html(data[0].title);
                 $("#image-1").attr("src", data[0].image);
-                $(".heading-content2").html(data[1].title);
-                $("#image-2").attr("src", data[1].image);
+                // $(".heading-content2").html(data[1].title);
+                // $("#image-2").attr("src", data[1].image);
                 $(".big-content1").html(data[0].text);
-                $(".big-content2").html(data[1].text);
+                // $(".big-content2").html(data[1].text);
                 var str = "";
                 $.each(data, function(key, item) {
-                    if(key == 1 || key == 2) return true;
+                    if(key == 1 || (key == 2 && item.category == "cultural_heroes")) return true;
                     str += '<div class="card bg-light mb-3" style="width: 20%; display: flex; float: left; margin-right: 40px">\
                         <div class="card-header">' + item.title + '</div>\
-                        <img src="'+ item.image +'" style="height: 100%; width: 100%;>\
+                        <img src="'+ item.image +'" style="height: 300px; width: 300px;>\
                         <div class="card-body">\
-                            <p class="card-text" style="padding: 10px; align: centre;">' + item.text + '</p>\
+                            <p class="card-text" style="padding: 10px; align: centre;">' + item.text.substr(0, 315) + '</p>\
                             <small class="badge badge-pill badge-warning" style ="align: center; margin: 10px; width: 30%">Similarity</small>\
                         </div>\
                         </div>';
