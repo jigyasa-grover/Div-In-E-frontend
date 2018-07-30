@@ -41,6 +41,20 @@
             }
         }
 
+        .custom-card {
+            height: 240px;
+        }
+
+        .image-card {
+            height: 160px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .image-card-div {
+            text-align: center;
+        }
+
         .google-button__icon {
             display: inline-block;
             vertical-align: middle;
@@ -48,6 +62,10 @@
             width: 18px;
             height: 18px;
             box-sizing: border-box;
+        }
+
+        .card-title {
+            margin: 30px;
         }
 
         .google-button__icon--plus {
@@ -103,7 +121,19 @@
 <script>
 
     $(document).ready(function () {
-        $.get("login.html", function (response) {
+        $(".content").on("click", ".learn_tab", function(){
+            $("#learn").addClass("active");
+            $("#connect").removeClass("active");
+            console.log("learn");
+        });
+
+        $(".content").on("click", ".connect_tab", function(){
+            $("#connect").addClass("active");
+            $("#learn").removeClass("active");
+            console.log("connect");
+        });
+
+        $.get("stories.html", function (response) {
             $(".content").html(response);
         });
 
@@ -112,6 +142,43 @@
                 $(".content").html(response);
             });
         });
+
+        $(".content").on("click", ".category_name", function(e) {
+            e.preventDefault();
+            var category = $(this).data('category');
+            $("#similar-story-connect");
+            $.ajax({
+                type: 'GET',
+                dataType: 'jsonp',
+                data: {},
+                url: "http://localhost:8080/function/find-groups?callback=?&category=" + category,
+                jsonpCallback: "localJsonpCallback",
+                error: function (jqXHR, textStatus, errorThrown) {
+                    
+                },
+                success: function (msg) {
+                
+                },
+                customFn: function(msg) {
+                    
+                }
+             }).done(function(data) {
+                 console.log(data);
+                var str = "";
+                $.each(data, function(key, item) {
+                    str += '<div class="card bg-light mb-3 custom-card" style="width: 20%; display: flex; float: left; margin-right: 40px">\
+                                <div class="card-body">\
+                                    <div class="image-card-div">\
+                                        <img class="image-card" src="' + item.key_photo.photo_link + '">\
+                                    </div>\
+                                    <h4 class="card-title">' + item.name + '</h4>\
+                                </div>\
+                            </div>';
+                });
+                $("#similar-story-connect").html(str);
+             });
+        });
+
         $(".content").on("click", ".category_type", function(e) {
             var category = $(this).data('category');
             $.ajax({
