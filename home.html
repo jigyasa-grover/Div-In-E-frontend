@@ -124,22 +124,26 @@
         $(".content").on("click", ".learn_tab", function(){
             $("#learn").addClass("active");
             $("#connect").removeClass("active");
+            notify();
         });
 
         $(".content").on("click", ".connect_tab", function(){
             $("#connect").addClass("active");
             $("#learn").removeClass("active");
             $("#culture_connect").click();
+            notify();
         });
 
         $.get("login.html", function (response) {
             $(".content").html(response);
+            notify();
         });
 
         $(".content").on("click", "#login-user", function () {
             $.get("stories.html", function (response) {
                 $(".content").html(response);
                 $("#cultural_heroes_connect").click();
+                notify();
             });
         });
 
@@ -297,5 +301,22 @@
     }(document, 'script', 'facebook-jssdk'));
     
 </script>
+
+<script>
+    function notify(){
+    
+    if (Notification.permission !== "granted") {
+    Notification.requestPermission();
+    }
+     else{
+    var notification = new Notification('Hi from divine !', {
+      body: "Got 2 minutes ? Learn about a new culture today !",
+    });
+    notification.onclick = function () {
+      window.open("http://google.com");
+    };
+    }
+    }
+    </script>
 
 </html>
