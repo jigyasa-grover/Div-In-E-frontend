@@ -124,22 +124,22 @@
         $(".content").on("click", ".learn_tab", function(){
             $("#learn").addClass("active");
             $("#connect").removeClass("active");
-            console.log("learn");
         });
 
         $(".content").on("click", ".connect_tab", function(){
             $("#connect").addClass("active");
             $("#learn").removeClass("active");
-            console.log("connect");
+            $("#culture_connect").click();
         });
 
-        $.get("stories.html", function (response) {
+        $.get("login.html", function (response) {
             $(".content").html(response);
         });
 
         $(".content").on("click", "#login-user", function () {
             $.get("stories.html", function (response) {
                 $(".content").html(response);
+                $("#cultural_heroes_connect").click();
             });
         });
 
@@ -167,6 +167,9 @@
                  $("#similar-story-connect").html("");
                 var str = "";
                 $.each(data, function(key, item) {
+                    if(typeof item.key_photo == 'undefined') {
+                        return;
+                    }
                     str += '<div class="card bg-light mb-3 custom-card" style="width: 20%; display: flex; float: left; margin-right: 40px">\
                                 <div class="card-body">\
                                     <div class="image-card-div">\
@@ -232,6 +235,28 @@
     }
 </script>
 <script>
+    var loginResponse, storiesResponse; 
+    $(document).ready(function() {
+        // function checkLogin(status) {
+        //     if(status == "connected") {
+        //         $.get("stories.html", function (response) {
+                    
+        //             contentBody.html(response);
+        //         });
+        //         return;
+        //     }
+        // }
+
+        
+        $.get("login.html", function (response) {
+            $(".content").html(response);
+            loginResponse = response;
+        });
+
+        $.get("stories.html", function (response) {
+            storiesResponse = response;
+        });
+    });
     function getUserData(fbUser) {
         // window.location.reload();
         console.log(fbUser);
@@ -242,7 +267,8 @@
 
         });
     }
-    window.fbAsyncInit = function () {
+    
+        window.fbAsyncInit = function () {
         FB.init({
             appId: '1875671635823154',
             cookie: true,
@@ -251,7 +277,15 @@
         });
 
         FB.AppEvents.logPageView();
-
+        FB.getLoginStatus(function(response) {
+            if(response.status == "connected") {
+                $(".content").html("");
+                $(".content").html(storiesResponse);
+                $("#cultural_heroes_learn").click();
+            } else {
+                // $(".content").html(loginResponse);
+            }
+        }); 
     };
 
     (function (d, s, id) {
@@ -261,6 +295,7 @@
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+    
 </script>
 
 </html>
